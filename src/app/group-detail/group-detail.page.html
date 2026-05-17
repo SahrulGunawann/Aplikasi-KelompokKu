@@ -1,0 +1,52 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Detail Kelompok</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="editGroup()" color="dark">
+        <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button (click)="confirmDelete()" color="danger">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="group">
+  <div class="header-card">
+    <h2>{{ group.subject }}</h2>
+    <div class="badge">Kelompok {{ group.groupNumber }}</div>
+  </div>
+
+  <div class="section-title">
+    <h3>Anggota Kelompok</h3>
+    <span>{{ group.members.length }} Orang</span>
+  </div>
+
+  <ion-list class="member-list" lines="none">
+    <ion-item *ngFor="let member of group.members; let i = index" class="member-item">
+      <ion-avatar slot="start" class="avatar-custom">
+        <img [src]="'https://ui-avatars.com/api/?name=' + member.name + '&background=random&color=fff'" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ member.name }}</h2>
+        <p *ngIf="group.leaderIndex === i" class="leader-badge">
+          <ion-icon name="star"></ion-icon> Ketua Kelompok
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="section-title" *ngIf="group.notes">
+    <h3>Catatan / Tugas</h3>
+  </div>
+
+  <ion-card class="notes-card" *ngIf="group.notes">
+    <ion-card-content>
+      {{ group.notes }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

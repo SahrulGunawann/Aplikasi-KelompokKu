@@ -1,0 +1,104 @@
+ion-content {
+    --background: var(--ion-color-light);
+}
+
+.header-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+    border-radius: 20px;
+    margin-bottom: 24px;
+    color: white;
+    box-shadow: 0 8px 20px rgba(155, 89, 182, 0.3);
+
+    h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin: 0 0 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        backdrop-filter: blur(4px);
+    }
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    margin-bottom: 12px;
+
+    h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--ion-color-dark);
+        margin: 0;
+    }
+
+    span {
+        font-size: 0.9rem;
+        color: var(--ion-color-medium);
+        font-weight: 600;
+    }
+}
+
+.member-list {
+    background: transparent;
+    margin-bottom: 24px;
+}
+
+.member-item {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --padding-start: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    .avatar-custom {
+        width: 48px;
+        height: 48px;
+    }
+
+    h2 {
+        font-weight: 600;
+        color: var(--ion-color-dark);
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+    }
+
+    .leader-badge {
+        color: var(--ion-color-warning);
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+
+        ion-icon {
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+    }
+}
+
+.notes-card {
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    background: #ffffff;
+
+    ion-card-content {
+        color: var(--ion-color-dark);
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 16px;
+    }
+}

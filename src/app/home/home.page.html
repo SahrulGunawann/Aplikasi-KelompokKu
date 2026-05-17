@@ -1,0 +1,50 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-title class="app-logo-title">
+      <span class="logo-kelompok">Kelompok</span><span class="logo-ku">Ku</span>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-searchbar placeholder="Cari mata kuliah..." (ionInput)="onSearchChange($event)" animated="true" color="light"
+      class="custom-search">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div *ngIf="filteredGroups.length === 0" class="empty-state">
+
+    <h3 *ngIf="!searchQuery">Belum ada kelompok</h3>
+    <p *ngIf="!searchQuery">Tap tombol + di bawah untuk membuat kelompok baru.</p>
+
+    <h3 *ngIf="searchQuery">Pencarian tidak ditemukan</h3>
+    <p *ngIf="searchQuery">Tidak ada kelompok untuk mata kuliah "{{searchQuery}}"</p>
+  </div>
+
+  <ion-list *ngIf="filteredGroups.length > 0" lines="none" class="group-list">
+    <ion-item *ngFor="let group of filteredGroups" (click)="goToDetail(group.id)" detail="false" class="group-item"
+      button>
+      <div class="item-content">
+        <ion-label>
+          <h2>{{ group.subject }}</h2>
+          <h3>Kelompok {{ group.groupNumber }}</h3>
+          <p>
+            <ion-icon name="people-outline"></ion-icon> {{ group.members.length }} Anggota
+            <span *ngIf="group.members[group.leaderIndex]">
+              • Ketua: {{ group.members[group.leaderIndex].name }}
+            </span>
+          </p>
+        </ion-label>
+      </div>
+      <div class="item-action" slot="end">
+        <ion-icon name="chevron-forward-outline" color="medium"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)="goToAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

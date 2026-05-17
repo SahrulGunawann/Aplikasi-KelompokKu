@@ -1,0 +1,76 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">{{ isEditMode ? 'Edit Kelompok' : 'Tambah Kelompok' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="form-container">
+    <ion-list class="custom-list">
+      <ion-list-header>
+        <ion-label>Informasi Umum</ion-label>
+      </ion-list-header>
+
+      <ion-item class="custom-input">
+        <ion-label position="stacked">Mata Kuliah / Pelajaran <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [(ngModel)]="subject" placeholder="Contoh: Pemrograman Mobile"></ion-input>
+      </ion-item>
+
+      <ion-item class="custom-input">
+        <ion-label position="stacked">Nomor Kelompok <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [(ngModel)]="groupNumber" placeholder="Contoh: 1, 2, atau A, B"></ion-input>
+      </ion-item>
+
+      <ion-list-header>
+        <ion-label>Anggota Kelompok</ion-label>
+      </ion-list-header>
+
+      <div *ngFor="let member of members; let i = index" class="member-row">
+        <ion-item class="custom-input member-input">
+          <ion-label position="stacked">Anggota {{i + 1}}</ion-label>
+          <ion-input [(ngModel)]="member.name" placeholder="Nama anggota"></ion-input>
+        </ion-item>
+
+        <ion-button fill="clear" color="danger" (click)="removeMember(i)" class="delete-btn" *ngIf="members.length > 1">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-button expand="block" fill="outline" color="tertiary" (click)="addMember()" class="add-member-btn">
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        Tambah Anggota
+      </ion-button>
+
+      <ion-item class="custom-input leader-select">
+        <ion-label position="stacked">Pilih Ketua Kelompok</ion-label>
+        <ion-select [(ngModel)]="leaderIndex" interface="action-sheet" okText="Pilih" cancelText="Batal">
+          <ion-select-option *ngFor="let member of members; let i = index" [value]="i">
+            {{ member.name || 'Anggota ' + (i+1) }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-list-header>
+        <ion-label>Keterangan Tambahan</ion-label>
+      </ion-list-header>
+
+      <ion-item class="custom-input">
+        <ion-label position="stacked">Catatan / Tugas</ion-label>
+        <ion-textarea [(ngModel)]="notes" placeholder="Tuliskan catatan atau pembagian tugas di sini..."
+          rows="4"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="footer-toolbar">
+    <ion-button expand="block" shape="round" color="secondary" (click)="saveGroup()" class="save-btn">
+      <ion-icon name="save-outline" slot="start"></ion-icon>
+      Simpan
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

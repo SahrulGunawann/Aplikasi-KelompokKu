@@ -1,0 +1,7 @@
+{
+  "name": "KelompokKu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

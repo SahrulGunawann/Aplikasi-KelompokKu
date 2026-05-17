@@ -1,0 +1,79 @@
+ion-content {
+    --background: var(--ion-color-light);
+}
+
+.form-container {
+    padding-bottom: 20px;
+}
+
+.custom-list {
+    background: transparent;
+
+    ion-list-header {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ion-color-primary);
+        padding-left: 0;
+        margin-top: 10px;
+    }
+}
+
+.custom-input {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --padding-start: 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    ion-label {
+        color: var(--ion-color-medium);
+        font-weight: 500;
+        margin-top: 10px;
+    }
+
+    ion-input,
+    ion-textarea,
+    ion-select {
+        --padding-top: 8px;
+        --padding-bottom: 12px;
+        --color: var(--ion-color-dark);
+        color: var(--ion-color-dark);
+        font-weight: 500;
+    }
+}
+
+.member-row {
+    display: flex;
+    align-items: center;
+
+    .member-input {
+        flex: 1;
+        margin-bottom: 8px;
+    }
+
+    .delete-btn {
+        margin-left: 8px;
+        margin-bottom: 8px;
+        height: 48px;
+    }
+}
+
+.add-member-btn {
+    margin: 12px 0 24px;
+    --border-width: 2px;
+    --border-radius: 12px;
+    font-weight: 600;
+}
+
+.footer-toolbar {
+    --background: var(--ion-color-light);
+    padding: 10px 16px 20px;
+
+    .save-btn {
+        margin: 0;
+        --box-shadow: 0 4px 12px rgba(232, 67, 147, 0.4);
+        font-weight: bold;
+        height: 50px;
+    }
+}
